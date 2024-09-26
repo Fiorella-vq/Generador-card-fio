@@ -17,7 +17,8 @@ const cardaleatorio = generadorCard (cardValues);
 
 document.querySelector(".value").innerHTML = cardaleatorio;
 
-const  pintaleatorio = generadorCard (pintaleatorio);
-document.querySelector
+const  pintaleatorio = generadorCard (cardPintas);
+
+document.querySelector(".pinta").innerHTML = cardaleatorio;
 
 };
