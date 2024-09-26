@@ -1,24 +1,40 @@
-/* eslint-disable */
-import "bootstrap";
-import "./style.css";
+window.onload = function () {
+    const cardValues = [2, 3, 4, 5, 6, 7, 8, 9, 10, "A", "J", "Q", "K"];
+    const cardPintas = ["♦", "♥", "♠", "♣"];
 
-import "./assets/img/rigo-baby.jpg";
-import "./assets/img/4geeks.ico";
+ 
+    function generadorCard(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+    }
 
-window.onload = function() {
-let cardValues= [2,3,4,5,6,7,8,9,10,"A","J","Q","K"] ;
-let cardPintas=  ["♦","♥","♠","♣"] ;
+ 
+    function generarCartaNueva() {
+        const cardAleatorio = generadorCard(cardValues);
+        const pintaAleatoria = generadorCard(cardPintas);
 
-function generadorCard(arr){
-Math.floor(Math.random()*cardValues.length);
-return arr [Math.floor(Math.random()*arr.length)] ;
-}
-const cardaleatorio = generadorCard (cardValues);
+        const valueElement = document.querySelector(".value");
+        const pintaElement = document.querySelector(".pinta");
+        const pintaBotomElement = document.querySelector(".pinta-botom");
 
-document.querySelector(".value").innerHTML = cardaleatorio;
+        valueElement.innerHTML = cardAleatorio;
+        pintaElement.innerHTML = pintaAleatoria;
+        pintaBotomElement.innerHTML = pintaAleatoria;
 
-const  pintaleatorio = generadorCard (cardPintas);
+      
+        if (pintaAleatoria === "♥" || pintaAleatoria === "♦") {
+            pintaElement.style.color = "red";
+            pintaBotomElement.style.color = "red";
+            valueElement.style.color = "red"; 
+        } else {
+            pintaElement.style.color = "black";
+            pintaBotomElement.style.color = "black";
+            valueElement.style.color = "black"; 
+        }
+    }
 
-document.querySelector(".pinta").innerHTML = cardaleatorio;
 
+    document.getElementById("CardButton").onclick = generarCartaNueva;
+    generarCartaNueva();
+    
+    setInterval(generarCartaNueva, 10000);
 };
